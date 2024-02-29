@@ -3,22 +3,22 @@ import { db } from "../models/db.js";
 export const dashboardController = {
   index: {
     handler: async function (request, h) {
-      // const artmarks = await db.playlistStore.getAllPlaylists();
+      const artmarks = await db.artmarkStore.getAllArtmarks();
       const viewData = {
         title: "ArtMarks Dashboard",
-        // playlists: playlists,
+         artmarks: artmarks,
       };
       return h.view("dashboard-view", viewData);
     },
   },
 
-/*  add: {
+  addArtmark: {
     handler: async function (request, h) {
-      const newPlayList = {
+      const newArtmark = {
         title: request.payload.title,
       };
-      await db.playlistStore.addPlaylist(newPlayList);
+      await db.artmarkStore.addArtmark(newArtmark);
       return h.redirect("/dashboard");
     },
-  }, */
+  },
 };
