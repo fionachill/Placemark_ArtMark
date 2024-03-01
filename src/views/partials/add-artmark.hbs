@@ -1,6 +1,23 @@
-<form action="/dashboard/addartmark" method="POST">
-    <div class="field">
-        <label class="label">ArtMark Title</label> <input class="input" type="text" placeholder="Enter ArtMark title" name="title">
+<form class="box" action="/dashboard/addartmark" method="POST">
+    <label>Enter Artmark Details:</label>
+    <div class="field is-horizontal">
+        <div class="field-body">
+            <div class="field">
+                <input class="input" type ="text" placeholder="Enter latitude" name="latitude"> 
+            </div>
+            <div class="field">
+                <input class="input" type ="text" placeholder="Enter longitude" name="longitude"> 
+            </div>
+            <div class="field">
+                <input class="input" type ="text" placeholder="Enter name of artwork" name="title">
+            </div>
+            <div class="field">
+                <input class="input" type ="text" placeholder="Enter name of Artist if known" name="artist">
+            </div>
+            <div class="field">
+                <input class="input" type ="text" placeholder="Enter medium of artwork" name="medium">
+            </div>
+        </div>    
     </div>
-    <button class="button is-link">Add ArtMark</button>
+    <button class="button is-primary">Add ArtMark</button>
 </form>

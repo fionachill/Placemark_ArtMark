@@ -1,7 +1,17 @@
-{{#each artmarks}}
-    <div class="box box-link-hover-shadow">
-        <h2 class="title">
-            {{title}}
-        </h2>
-    </div>
-{{/each}}
+<div class="tile is-ancestor">
+    {{#each artmarks}}
+        <div class="tile is-parent">
+            <article class="tile is-child notification is-dark">
+                <p class="title">
+                    {{title}}
+                </p>
+                <p class="subtitle">
+                    {{artist}}
+                </p>
+                <a href="/artmark/{{_id}}" class ="button">
+                    <i class="fas fa-monument da-10x"></i>
+                </a>
+            </article>
+        </div>
+    {{/each}}
+</div>

@@ -8,7 +8,11 @@ export const artmarkMemStore = {
         return artmarks;
     },
 
-    async addArtMark(artmark) {
+    async getUserArtmarks(userid) {
+        return artmarks.filter((artmark) => artmark.userid === userid );
+    },
+
+    async addArtmark(artmark) {
         artmark._id = v4();
         artmarks.push(artmark);
         return artmark;
@@ -25,5 +29,13 @@ export const artmarkMemStore = {
 
     async deleteAllArtmarks() {
         artmarks = [];
+    },
+
+    async updateArtmark(artmark, updatedArtmark) {
+        artmark.latitude = updatedArtmark.latitude;
+        artmark.longitude = updatedArtmark.longitude;
+        artmark.title = updatedArtmark.title;
+        artmark.artist = updatedArtmark.artist;
+        artmark.medium = updatedArtmark.medium;
     },
 };
