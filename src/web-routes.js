@@ -14,10 +14,10 @@ export const webRoutes = [
     { method: "GET", path: "/about", config: aboutController.index },
 
     { method: "GET", path: "/dashboard", config: dashboardController.index },
+    { method: "GET", path: "/dashboard/deleteartmark/{id}", config: dashboardController.deleteArtmark },
 
-    { method: "GET", path: "dashboard/artmark/{id}", config: artmarkController.index },
+    { method: "GET", path: "/artmark/{id}", config: artmarkController.index },
     { method: "POST", path: "/dashboard/addartmark", config: artmarkController.addArtmark },
-    // { method: "GET", path: "/dashboard/deleteartmark", config: dashboardController.deleteArtmark},
 
     
 

@@ -1,23 +1,75 @@
 <form class="box" action="/dashboard/addartmark" method="POST">
-    <label>Enter Artmark Details:</label>
-    <div class="field is-horizontal">
+    <h1 class="title">Enter Artmark Details:</h1>
+    <div class="field">     
         <div class="field-body">
+            <div class="field">    
+                <div class="select is-rounded">
+                    <select name="category">
+                        <option>Select Category</option>
+                        <option>Painting</option>
+                        <option>Drawing</option>
+                        <option>Sculpture</option>
+                        <option>Monument</option>
+                        <option>Street Art</option>
+                        <option>Architecture</option>
+                        <option>Photography</option>
+                        <option>Mixed Media</option>
+                        <option>Textile</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+   
+
+    <div class="field">
+        <div class="field-body">
+            <div class="field">
+                <input class="input" type ="text" placeholder="Artwork title" name="title">
+            </div>    
+            <div class="field">
+                <input class="input" type ="text" placeholder="Artist name" name="artist">
+            </div>
+        </div>    
+    </div>
+    <div class="field">
+        <textarea class="textarea is-link" placeholder="Enter a brief description of the ArtMark"></textarea>
+    </div> 
+    <div class="field">
+        <div class="field-body">
+            <div class="field">
+                <input class="input" type ="text" placeholder="Enter location" name="location"> 
+            </div>
             <div class="field">
                 <input class="input" type ="text" placeholder="Enter latitude" name="latitude"> 
             </div>
             <div class="field">
                 <input class="input" type ="text" placeholder="Enter longitude" name="longitude"> 
             </div>
+        </div>
+    </div> 
+    
+    <br>
+    <div class="field">
+        <label class="label">Is access to this ArtMark free?</label>
+        <div class="field-body">
             <div class="field">
-                <input class="input" type ="text" placeholder="Enter name of artwork" name="title">
+                <div class="control">
+                    <label class="radio">
+                    <input type="radio" name="access">
+                        Yes
+                    </label>
+                    <label class="radio">
+                    <input type="radio" name="access">
+                        No
+                    </label>
+                </div>
             </div>
-            <div class="field">
-                <input class="input" type ="text" placeholder="Enter name of Artist if known" name="artist">
-            </div>
-            <div class="field">
-                <input class="input" type ="text" placeholder="Enter medium of artwork" name="medium">
-            </div>
-        </div>    
-    </div>
-    <button class="button is-primary">Add ArtMark</button>
+        </div>
+    </div>            
+    
+    <div class="buttons is-right">
+        <button class="button is-link is-rounded">Add ArtMark</button>
+    </div>            
+    
 </form>

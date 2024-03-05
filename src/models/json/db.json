@@ -1,0 +1,12 @@
+{
+  "users": [
+    {
+      "firstName": "Fiona",
+      "lastName": "Hill",
+      "email": "fiona@email.com",
+      "password": "f",
+      "_id": "ffe26fbf-c60e-4bce-8a32-aa35ef4032d2"
+    }
+  ],
+  "artmarks": []
+}
