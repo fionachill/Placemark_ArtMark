@@ -15,10 +15,7 @@ export const webRoutes = [
 
     { method: "GET", path: "/dashboard", config: dashboardController.index },
     { method: "GET", path: "/dashboard/deleteartmark/{id}", config: dashboardController.deleteArtmark },
+    { method: "POST", path: "/dashboard/addartmark", config: dashboardController.addArtmark },
 
     { method: "GET", path: "/artmark/{id}", config: artmarkController.index },
-    { method: "POST", path: "/dashboard/addartmark", config: artmarkController.addArtmark },
-
-    
-
 ];

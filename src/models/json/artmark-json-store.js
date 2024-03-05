@@ -17,8 +17,10 @@ export const artmarkJsonStore = {
 
     async getArtmarkById(id) {
         await db.read();
-        return db.data.artmarks.find((artmark) => artmark._id === id);
-    },
+        let returnedArtmark = db.data.artmarks.find((artmark) => artmark._id === id);
+        if (returnedArtmark === undefined) returnedArtmark = null;
+        return returnedArtmark;
+        },
 
     async getUserArtmarks(userid) {
         await db.read();
@@ -28,7 +30,7 @@ export const artmarkJsonStore = {
     async deleteArtmarkById(id) {
         await db.read();
         const index = db.data.artmarks.findIndex((artmark) => artmark._id === id);
-        db.data.artmarks.splice(index, 1);
+        if (index !== -1) db.data.artmarks.splice(index, 1);
         await db.write();
     },
 

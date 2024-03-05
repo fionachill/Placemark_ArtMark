@@ -1,12 +1,27 @@
 {
-  "users": [
-    {
-      "firstName": "Fiona",
-      "lastName": "Hill",
-      "email": "fiona@email.com",
-      "password": "f",
-      "_id": "ffe26fbf-c60e-4bce-8a32-aa35ef4032d2"
-    }
-  ],
-  "artmarks": []
+  "users": [],
+  "artmarks": [
+    [
+      {
+        "category": "Street Art",
+        "title": "Keith Haring Mural",
+        "artist": "Keith Haring",
+        "description": "A mural in white paint depicting a faceless person on a mythical being",
+        "location": "Amsterdam",
+        "latitude": "52.38044951788457",
+        "longitude": "4.864587109734134",
+        "access": "yes"
+      },
+      {
+        "category": "Architecture",
+        "title": "Howard Mausoleum",
+        "artist": "Simon Vierpyl",
+        "description": "A pyramid tomb built in 1785, commissioned by the viscount Ralph Howard",
+        "location": "Arklow",
+        "latitude": "52.816633217101696",
+        "longitude": "-6.162400641983302",
+        "access": "yes"
+      }
+    ]
+  ]
 }
