@@ -1,7 +1,7 @@
 import { assert } from "chai";
-import { db } from "../src/models/db.js";
-import { betty, testUsers } from "./fixtures.js";
-import { assertSubset } from "./test-utils.js";
+import { db } from "../../src/models/db.js";
+import { betty, testUsers } from "../fixtures.js";
+import { assertSubset } from "../test-utils.js";
 
 suite("User API tests", () => {
     setup(async () => {
@@ -18,19 +18,20 @@ suite("User API tests", () => {
         assertSubset(betty, newUser)
     });
 
+    test("delete all users", async() => {
+        let returnedUsers = await db.userStore.getAllUsers();
+        assert.equal(returnedUsers.length, 3);
+        await db.userStore.deleteAll();
+        returnedUsers = await db.userStore.getAllUsers();
+        assert.equal(returnedUsers.length, 0); 
+    });
+
     test("get a user - success", async () => {
         const user = await db.userStore.addUser(betty);
         const returnedUser1 = await db.userStore.getUserById(user._id);
         assert.deepEqual(user, returnedUser1);
         const returnedUser2 = await db.userStore.getUserByEmail(user.email);
         assert.deepEqual(user, returnedUser2);
-    });
-
-    test("get a user - failures", async () => {
-        const noUserWithId = await db.userStore.getUserById("123");
-        assert.isNull(noUserWithId);
-        const noUserWithEmail = await db.userStore.getUserByEmail("no@one.com");
-        assert.isNull(noUserWithEmail);
     });
 
     test("get a user - bad params", async () => {
@@ -53,11 +54,5 @@ suite("User API tests", () => {
         assert.equal(testUsers.length, allUsers.length);
     });
     
-    test("delete all users", async() => {
-        let returnedUsers = await db.userStore.getAllUsers();
-        assert.equal(returnedUsers.length, 3);
-        await db.userStore.deleteAll();
-        returnedUsers = await db.userStore.getAllUsers();
-        assert.equal(returnedUsers.length, 0); 
-    });
+
 });

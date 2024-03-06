@@ -11,9 +11,9 @@ const artmarkSchema = new Schema({
     latitude: Number,
     longitude: Number,
     access: String,
-    artmarkid: {
+    userid: {
         type: Schema.Types.ObjectId,
-        ref: "Artmark",
+        ref: "User",
     },
 });
 

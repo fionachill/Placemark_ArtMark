@@ -27,7 +27,7 @@ export const testUsers = [
 ];
 
 export const monument = {
-    category: "monument",
+    category: "Monument",
     title: "1798 Monument",
     artist: "Unknown",
     description: "A stone cross built in the 1800s to commemorate the 1798 rebellion",
@@ -35,7 +35,7 @@ export const monument = {
     latitude: "52.67336565814323",
     longitude: "-6.3023335486884395",
     access: "yes"
-}
+};
 
 export const testArtmarks = [
     {
@@ -58,4 +58,6 @@ export const testArtmarks = [
         longitude: "-6.162400641983302",
         access: "yes"
     },
-]
+];
+
+export const serviceUrl = "http://localhost:3000";

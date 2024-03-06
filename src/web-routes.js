@@ -1,7 +1,7 @@
 import { aboutController } from "./controllers/about-controller.js";
 import { accountsController } from "./controllers/accounts-controller.js";
-import { artmarkController } from "./controllers/artmark-controller.js";
 import { dashboardController } from "./controllers/dashboard-controller.js";
+import { artmarkController } from "./controllers/artmark-controller.js";
 
 export const webRoutes = [
     { method: "GET", path: "/", config: accountsController.index },

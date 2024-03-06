@@ -16,13 +16,13 @@ export const artmarkMongoStore = {
 
     async addArtmark(artmark) {
         const newArtmark = new Artmark(artmark);
-        const playlistObj = await newArtmark.save();
+        const artmarkObj = await newArtmark.save();
         return this.getArtmarkById(artmarkObj._id);
     },
 
     async getUserArtmarks(id) {
-        const artmark = await Artmark.find({ userid: id }).lean();
-        return artmark;
+        const artmarks = await Artmark.find({ userid: id }).lean();
+        return artmarks;
     },
 
     async deleteArtmarkById(id) {

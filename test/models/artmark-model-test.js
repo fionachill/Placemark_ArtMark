@@ -1,8 +1,8 @@
 import { assert } from "chai";
-import { db } from "../src/models/db.js";
-import { monument, testArtmarks } from "./fixtures.js";
-import { assertSubset } from "./test-utils.js";
 import { EventEmitter } from "events";
+import { db } from "../../src/models/db.js";
+import { monument, testArtmarks } from "../fixtures.js";
+import { assertSubset } from "../test-utils.js";
 
 
 EventEmitter.setMaxListeners(25);
@@ -35,7 +35,7 @@ suite("Artmark Model tests", () => {
     test("get an artmark - success", async () => {
         const artmark = await db.artmarkStore.addArtmark(monument);
         const returnedArtmark = await db.artmarkStore.getArtmarkById(artmark._id);
-        assert.equal(monument, artmark);
+        assertSubset(monument, artmark);
     });
 
     test("delete one artmark - success", async () => {

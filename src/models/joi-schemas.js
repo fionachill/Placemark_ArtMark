@@ -16,9 +16,9 @@ export const ArtmarkSpec = {
     category: Joi.string(),
     title: Joi.string().required(), 
     artist: Joi.string().required(), 
-    description: Joi.string().required(), 
+    description: Joi.string().optional(), 
     location: Joi.string().required(), 
-    latitude: Joi.number(),
-    longitude: Joi.number(),
+    latitude: Joi.number().allow("-", "."),
+    longitude: Joi.number().allow("-", "."),
     access: Joi.string(),
 };

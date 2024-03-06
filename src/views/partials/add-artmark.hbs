@@ -6,15 +6,15 @@
                 <div class="select is-rounded">
                     <select name="category">
                         <option>Select Category</option>
-                        <option>Painting</option>
-                        <option>Drawing</option>
-                        <option>Sculpture</option>
-                        <option>Monument</option>
-                        <option>Street Art</option>
-                        <option>Architecture</option>
-                        <option>Photography</option>
-                        <option>Mixed Media</option>
-                        <option>Textile</option>
+                        <option value="Painting">Painting</option>
+                        <option value="Drawing">Drawing</option>
+                        <option value="Sculpture">Sculpture</option>
+                        <option value="Monument">Monument</option>
+                        <option value="Street Art">Street Art</option>
+                        <option value="Architecture">Architecture</option>
+                        <option value="Photography">Photography</option>
+                        <option value="Mixed Media">Mixed Media</option>
+                        <option value="Textile">Textile</option>
                     </select>
                 </div>
             </div>
@@ -33,7 +33,7 @@
         </div>    
     </div>
     <div class="field">
-        <textarea class="textarea is-link" placeholder="Enter a brief description of the ArtMark"></textarea>
+        <textarea class="textarea is-link" placeholder="Enter a brief description of the ArtMark" name="description"></textarea>
     </div> 
     <div class="field">
         <div class="field-body">
@@ -56,11 +56,11 @@
             <div class="field">
                 <div class="control">
                     <label class="radio">
-                    <input type="radio" name="access">
+                    <input type="radio" name="access" value="Yes">
                         Yes
                     </label>
                     <label class="radio">
-                    <input type="radio" name="access">
+                    <input type="radio" name="access" value="No">
                         No
                     </label>
                 </div>
