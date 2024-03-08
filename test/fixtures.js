@@ -5,6 +5,11 @@ export const betty = {
     password: "secret",
 };
 
+export const bettyCredentials = {
+    email: "betty@fleischer.com",
+    password: "secret",
+};
+
 export const testUsers = [
     {
         firstName: "Tony",

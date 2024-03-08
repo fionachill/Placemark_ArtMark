@@ -18,4 +18,7 @@ export const webRoutes = [
     { method: "POST", path: "/dashboard/addartmark", config: dashboardController.addArtmark },
 
     { method: "GET", path: "/artmark/{id}", config: artmarkController.index },
+
+    { method: "GET", path: "/{param*}", handler: { directory: { path: "./public" } }, options: { auth: false} },
+
 ];
