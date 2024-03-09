@@ -12,6 +12,9 @@
     "testapi": "mocha --ui tdd test/api/**/*.js",
     "dev": "npx nodemon src/server.js --ignore 'src/models/json/*.json'"
   },
+  "engines": {
+    "node": ">=16"
+  },
   "author": "",
   "license": "ISC",
   "devDependencies": {
