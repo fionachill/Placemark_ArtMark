@@ -35,5 +35,15 @@ export const artmarkMongoStore = {
 
     async deleteAllArtmarks() {
         await Artmark.deleteMany({});
+    },
+
+    async updateArtmark(updatedArtmark) {
+        const artmark = await Artmark.findOne({ _id: updatedArtmark._id });
+        artmark.title = updatedArtmark.title;
+        artmark.img = updatedArtmark.img;
+        artmark.description = updatedArtmark.description;
+        await artmark.save();
     }
+
+
 };

@@ -4,7 +4,8 @@ const { Schema } = Mongoose;
 
 const artmarkSchema = new Schema({
     category: String,
-    title: String, 
+    title: String,
+    img: String, 
     artist: String,
     description: String,
     location: String,
