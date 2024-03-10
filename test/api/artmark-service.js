@@ -1,5 +1,4 @@
 import axios from "axios";
-
 import { betty, serviceUrl } from "../fixtures.js";
 
 export const artmarkService = {
@@ -30,16 +29,6 @@ export const artmarkService = {
         return res.data;
     },
 
-    async authenticate(user) {
-        const response = await axios.post(`${this.artmarkUrl}/api/users/authenticate`, user);
-        axios.defaults.headers.common["Authorization"] = "Bearer " + response.data.token;
-        return response.data;
-    },
-
-    async clearAuth() {
-        axios.defaults.headers.common["Authorization"] = "";
-    },
-
     async createArtmark(artmark) {
         const res = await axios.post(`${this.artmarkUrl}/api/artmarks`, artmark);
         return res.data;
@@ -63,6 +52,18 @@ export const artmarkService = {
     async getArtmark(id) {
         const res = await axios.get(`${this.artmarkUrl}/api/artmarks/${id}`);
         return res.data;
+    },
+
+    async authenticate(user) {
+        const response = await axios.post(`${this.artmarkUrl}/api/users/authenticate`, user);
+        // eslint-disable-next-line dot-notation, prefer-template
+        axios.defaults.headers.common["Authorization"] = "Bearer " + response.data.token;
+        return response.data;
+    },
+
+    async clearAuth() {
+        // eslint-disable-next-line dot-notation
+        axios.defaults.headers.common["Authorization"] = "";
     },
 
 };
