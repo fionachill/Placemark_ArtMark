@@ -1,5 +1,6 @@
 import { db } from "../models/db.js";
 import { UserCredentialsSpec, UserSpec } from "../models/joi-schemas.js"
+import { userMongoStore } from "../models/mongo/user-mongo-store.js";
 
 export const accountsController = {
   index: {
@@ -61,6 +62,27 @@ export const accountsController = {
       request.cookieAuth.clear();
       return h.redirect("/");
     },
+  },
+
+  showProfile: {
+    auth: false,
+    handler: function (request, h) {
+      const loggedInUser = request.auth.credentials;
+      const viewData = {
+        title: "Profile",
+        user: loggedInUser,
+      }
+      return h.view("profile-view", viewData);
+    },
+  },
+
+  updateProfile: {
+    handler: async function (request, h) {
+      const user = await db.userStore.getUserById(request.params.id);
+      const updatedUser = request.body;
+      await userStore.updateProfile(updatedUser)
+      return h.redirect("/dashboard");
+      },
   },
 
   async validate(request, session) {

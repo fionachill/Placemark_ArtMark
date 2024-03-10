@@ -1,7 +1,7 @@
 import { assert } from "chai";
 import { EventEmitter } from "events";
 import { db } from "../../src/models/db.js";
-import { monument, testArtmarks } from "../fixtures.js";
+import { monument, testArtmarks, betty } from "../fixtures.js";
 import { assertSubset } from "../test-utils.js";
 
 
@@ -9,12 +9,15 @@ EventEmitter.setMaxListeners(25);
 
 suite("Artmark Model tests", () => {
 
+    let testUser = null;
+
     setup(async () => {
         db.init("mongo");
         await db.artmarkStore.deleteAllArtmarks();
+        testUser = await db.userStore.addUser(betty);
         for (let i = 0; i < testArtmarks.length; i += 1) {
             // eslint-disable-next-line no-await-in-loop
-            testArtmarks[i] = await db.artmarkStore.addArtmark(testArtmarks);
+            testArtmarks[i] = await db.artmarkStore.addArtmark(betty._id, testArtmarks);
         }
     });
 

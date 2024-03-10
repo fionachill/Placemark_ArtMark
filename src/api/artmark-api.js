@@ -1,11 +1,13 @@
 import Boom from "@hapi/boom";
-import { ArtmarkSpec, ArtmarkSpecPlus, ArtmarkArray, IdSpec } from "../models/joi-schemas.js"
+import { ArtmarkSpec, ArtmarkSpecPlus, ArtmarkArraySpec, IdSpec } from "../models/joi-schemas.js"
 import { db } from "../models/db.js";
 import { validationError } from "./logger.js";
 
 export const artmarkApi = {
     find: {
-        auth: "jwt",
+        auth: {
+            strategy: "jwt",
+        },
         handler: async function (request, h) {
             try {
                 const artmarks = await db.artmarkStore.getAllArtmarks();
@@ -17,11 +19,13 @@ export const artmarkApi = {
         tags: ["api"],
         description: "Get all Artmarks",
         notes: "Returns details of all artmarks",
-        response: { schema: ArtmarkArray, failAction: validationError },
+        response: { schema: ArtmarkArraySpec, failAction: validationError },
     },
 
     findOne: {
-        auth: "jwt",
+        auth: {
+            strategy: "jwt",
+        },
         async handler(request) {
             try {
                 const artmark = await db.artmarkStore.getArtmarkById(request.params.id);
@@ -41,7 +45,9 @@ export const artmarkApi = {
     },
 
     create: {
-        auth: "jwt",
+        auth: {
+            strategy: "jwt",
+        },
         handler: async function (request, h) {
             try {
                 const artmark = request.payload;
@@ -57,12 +63,14 @@ export const artmarkApi = {
         tags: ["api"],
         description: "Create an Artmark",
         notes: "Returns the newly created artmark",
-        validate: { payload: ArtmarkSpec },
+        validate: { payload: ArtmarkSpec, failAction: validationError },
         response: { schema: ArtmarkSpecPlus, failAction: validationError },
     },
 
     deleteOne: {
-        auth: "jwt",
+        auth: {
+            strategy: "jwt",
+        },
         handler: async function (request, h) {
             try {
                 const artmark = await db.artmarkStore.getArtmarkById(request.params.id);
@@ -81,7 +89,9 @@ export const artmarkApi = {
     },
 
     deleteAll: {
-        auth: "jwt",
+        auth: {
+            strategy: "jwt",
+        },
         handler: async function (request, h) {
             try {
                 await db.artmarkStore.deleteAllArtmarks();

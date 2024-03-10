@@ -1,5 +1,6 @@
 import { EventEmitter } from "events";
 import { assert } from "chai";
+import { db } from "../../src/models/db.js";
 import { artmarkService } from "./artmark-service.js";
 import { assertSubset } from "../test-utils.js";
 import { betty, bettyCredentials, monument, testArtmarks } from "../fixtures.js";
@@ -8,8 +9,7 @@ EventEmitter.setMaxListeners(25);
 
 suite("Artmark API tests", () => {
     
-    let user = null;
-
+    // let user = null;
     const artmarks = new Array(testArtmarks.length);
 
     setup(async () => {
@@ -26,7 +26,8 @@ suite("Artmark API tests", () => {
     teardown(async () => {});
 
     test("create artmark", async () => {
-        const returnedArtmark = await artmarkService.createArtmark(monument);
+        const user = await artmarkService.createUser(betty);
+        const returnedArtmark = await artmarkService.createArtmark(user._id, monument);
         assert.isNotNull(returnedArtmark);
         assertSubset(monument,returnedArtmark);
     });

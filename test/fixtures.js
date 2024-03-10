@@ -1,3 +1,5 @@
+export const serviceUrl = "http://localhost:3000";
+
 export const betty = {
     firstName: "Betty",
     lastName: "Boop",
@@ -39,7 +41,7 @@ export const monument = {
     location: "Gorey",
     latitude: "52.67336565814323",
     longitude: "-6.3023335486884395",
-    access: "yes"
+    access: "Yes"
 };
 
 export const testArtmarks = [
@@ -65,4 +67,3 @@ export const testArtmarks = [
     },
 ];
 
-export const serviceUrl = "http://localhost:3000";

@@ -24,14 +24,14 @@ export const UserArray = Joi.array().items(UserSpecPlus).label("UserArray");
 
 export const ArtmarkSpec = Joi.object()
     .keys({
-    category: Joi.string().example("Sculpture"),
+    category: Joi.string().valid("Painting","Drawing","Sculpture","Monument","Street Art", "Architecture","Photography","Mixed Media","Textile").optional(),
     title: Joi.string().example("Luke Kelly Statue").required(), 
     artist: Joi.string().example("Vera Klute").required(), 
     description: Joi.string().example("A large marble sculpted head of Irish Folk Singer Luke Kelly").optional(), 
     location: Joi.string().example("Dublin").required(), 
-    latitude: Joi.number().example("53.34061384439304").allow("-", "."),
-    longitude: Joi.number().example("-6.2633114754916015").allow("-", "."),
-    access: Joi.string(),
+    latitude: Joi.string().example("53.34061384439304").allow(""),
+    longitude: Joi.string().example("-6.2633114754916015").allow(""),
+    access: Joi.string().valid("Yes", "No"),
     userid: IdSpec,
 })
 .label("Artmark");
@@ -41,7 +41,7 @@ export const ArtmarkSpecPlus = ArtmarkSpec.keys({
     __v: Joi.number(),
 }).label(("ArtmarkPlus"));
 
-export const ArtmarkArray = Joi.array().items(ArtmarkSpec).label("ArtmarkArray");
+export const ArtmarkArraySpec = Joi.array().items(ArtmarkSpecPlus).label("ArtmarkArray");
 
 export const JwtAuth = Joi.object()
 .keys({
