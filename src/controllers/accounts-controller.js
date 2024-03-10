@@ -66,8 +66,8 @@ export const accountsController = {
 
   showProfile: {
     auth: false,
-    handler: function (request, h) {
-      const loggedInUser = request.auth.credentials;
+    handler: async function (request, h) {
+      const loggedInUser = await db.userStore.getUserById(request.params.id);
       const viewData = {
         title: "Profile",
         user: loggedInUser,
