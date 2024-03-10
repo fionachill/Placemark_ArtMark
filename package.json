@@ -30,6 +30,7 @@
     "lowdb": "^7.0.1",
     "mais-mongoose-seeder": "^1.0.7",
     "mongoose": "^8.2.1",
+    "register": "^0.0.0",
     "uuid": "^9.0.1"
   },
   "devDependencies": {
@@ -41,7 +42,8 @@
     "eslint-plugin-import": "^2.29.1",
     "mocha": "^10.3.0",
     "nodemon": "^3.1.0",
-    "prettier": "^3.2.5"
+    "prettier": "^3.2.5",
+    "ts-node": "^10.9.2"
   },
   "engines": {
     "node": ">=16"

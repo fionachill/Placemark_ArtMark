@@ -9,8 +9,8 @@ const artmarkSchema = new Schema({
     artist: String,
     description: String,
     location: String,
-    latitude: Number,
-    longitude: Number,
+    latitude: String,
+    longitude: String,
     access: String,
     userid: {
         type: Schema.Types.ObjectId,

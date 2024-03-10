@@ -33,5 +33,6 @@ export async function validate(decoded, request) {
     if (!user) {
         return { isValid: false };
     }
+    console.log("boom?")
     return { isValid: true, credentials: user };
 }

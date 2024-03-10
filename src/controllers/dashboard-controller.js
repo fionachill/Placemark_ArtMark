@@ -32,8 +32,8 @@ export const dashboardController = {
             artist: request.payload.artist,
             description: request.payload.description,
             location: request.payload.location,
-            latitude: Number(request.payload.latitude),
-            longitude: Number(request.payload.longitude),
+            latitude: request.payload.latitude,
+            longitude: request.payload.longitude,
             access: request.payload.access,
         };
         await db.artmarkStore.addArtmark(newArtmark);
