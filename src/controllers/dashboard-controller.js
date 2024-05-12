@@ -6,7 +6,7 @@ export const dashboardController = {
     handler: async function (request, h) {
       const loggedInUser = request.auth.credentials;
       const artmarks = await db.artmarkStore.getUserArtmarks(loggedInUser._id);
-      console.log(loggedInUser._id);
+      console.log("successfully logged in user: ", loggedInUser.firstName);
       const viewData = {
         title: "ArtMarks Dashboard",
         user: loggedInUser,

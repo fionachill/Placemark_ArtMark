@@ -6,7 +6,7 @@
             <label class="label">Name</label>
             <p class="subtitle"> {{user.firstName}} {{user.lastName}} </p>
             <label class="label">Email</label>
-            <p class="subtitle">{{user/email}}</p>    
+            <p class="subtitle">{{user.email}}</p>    
     </div>
 </section>
 
@@ -41,7 +41,7 @@
 <section class="section">
     <div class="box">
         <h1 class="title">Delete Account</h1>
-        <form action="/profile/{id}/delete" method="POST">
+        <form action="/profile/delete/{{user._id}}" method="POST">
                 <p>Delete My Artmarks Account</p>
                  <button class="button is-link">Delete this account</button>
         </form>

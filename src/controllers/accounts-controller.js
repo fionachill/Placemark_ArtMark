@@ -98,9 +98,9 @@ export const accountsController = {
   },
 
   showProfile: {
-    auth: false,
     handler: async function (request, h) {
-      const user = await db.userStore.getUserById(request.params.id);
+      const loggedInUser = request.auth.credentials;
+      const user = await db.userStore.getUserById(loggedInUser._id);
       console.log(user);
       const viewData = {
         title: "Profile",
@@ -123,7 +123,8 @@ export const accountsController = {
 
   deleteAccount: {
     handler: async function (request, h) {
-      const user = await db.userStore.getUserById(request.params.id);
+      const loggedInUser = request.auth.credentials;
+      const user = await db.userStore.getUserById(loggedInUser._id);
       await db.userStore.deleteUserById(user._id);
       return h.redirect("/");  
     },
