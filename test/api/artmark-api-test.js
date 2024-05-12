@@ -25,7 +25,7 @@ suite("Artmark API tests", () => {
     teardown(async () => {});
 
     test("create artmark", async () => {
-        const returnedArtmark = await artmarkService.createArtmark( monument);
+        const returnedArtmark = await artmarkService.createArtmark(monument);
         assert.isNotNull(returnedArtmark);
         assertSubset(monument,returnedArtmark);
     });

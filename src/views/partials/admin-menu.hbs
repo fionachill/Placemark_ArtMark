@@ -1,0 +1,21 @@
+<nav class="navbar">
+  <div class="navbar-brand">
+    {{> artmarks-brand}}
+  </div>
+  <div class="navbar-menu" id="adminMenu">
+    <div class="navbar-end">
+      <div class="navbar-item">
+        <div class="buttons">
+          <a id="admindashboard" class="button" href="/admindashboard"> Admin Dashboard </a>
+          <a id="adminusers" class="button" href="/adminusers"> Users</a>
+          <a id="adminartmarks" class="button" href="/adminartmarks"> Artmarks </a>
+          <a id="logout" class="button" href="/logout"> Logout </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<script>
+    document.getElementById("{{active}}").classList.add("is-link");
+</script>

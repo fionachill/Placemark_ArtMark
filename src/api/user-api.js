@@ -6,7 +6,9 @@ import { createToken } from "./jwt-utils.js";
 
 export const userApi = {
     find: {
-        auth: "jwt",
+        auth: {
+            strategy: "jwt",
+        },
         handler: async function(request, h) {
             try {
                 const users = await db.userStore.getAllUsers();
@@ -18,11 +20,13 @@ export const userApi = {
         tags: ["api"],
         description: "Get all userApi",
         notes: "Returns details of all userApi",
-        response: { schema: UserArray, failAction: validationError }
+        response: { schema: UserArray, failAction: validationError },
     },
 
     findOne: {
-        auth: "jwt",
+        auth: {
+            strategy: "jwt",
+        },
         handler: async function (request, h) {
             try {
                 const user = await db.userStore.getUserById(request.params.id);
@@ -38,6 +42,7 @@ export const userApi = {
         description: "Get a specific user",
         notes: "Returns user details",
         validate: { params: { id: IdSpec }, failAction: validationError },
+        response: { schema: UserSpecPlus, failAction: validationError },
     },
 
     create: {
@@ -61,7 +66,9 @@ export const userApi = {
     },
     
     deleteOne: {
-        auth: "jwt",
+        auth: {
+            strategy: "jwt",
+        },
         handler: async function (request, h) {
             try {
                 const user = await db.userStore.getUserById(request.params.id);
@@ -82,7 +89,9 @@ export const userApi = {
     },
 
     deleteAll: {
-        auth: "jwt",
+        auth: {
+            strategy: "jwt",
+        },
         handler: async function (request, h) {
             try {
                 await db.userStore.deleteAll();
@@ -109,7 +118,7 @@ export const userApi = {
                 }
                 const token = createToken(user);
                 return h.response({ success: true, token: token }).code(201);
-            } catch (err) {
+                } catch (err) {
                 return Boom.serverUnavailable("Database Error");
             }
         },

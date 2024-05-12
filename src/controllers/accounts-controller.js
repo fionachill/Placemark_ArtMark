@@ -30,12 +30,15 @@ export const accountsController = {
       return h.redirect("/");
     },
   },
+
+
   showLogin: {
     auth: false,
     handler: function (request, h) {
       return h.view("login-view", { title: "Login to ArtMarks" });
     },
   },
+
   login: {
     auth: false,
     validate: {
@@ -56,6 +59,36 @@ export const accountsController = {
     },
   },
 
+  showAdminLogin: {
+    auth: false,
+    handler: function (request, h) {
+      return h.view("admin-login", { title: "Admin login" });
+    },
+  },
+
+  adminlogin: {
+    auth: false,
+    validate: {
+      payload: UserCredentialsSpec,
+      options: { abortEarly: false },
+      failAction: function (request, h, error ) {
+        return h.redirect("/", {title: "Log in error", errors: error.details }).takeover().code;
+      },
+    },
+    handler: async function (request, h) {
+      const { email, password } = request.payload;
+      const user = await db.userStore.getUserByEmail(email);
+      if (!user || user.password !== password) {
+          return h.redirect("/");
+        }
+      if ( user.admin !== true ) {
+          return h.redirect("/");
+      } 
+      request.cookieAuth.set({ id: user._id });
+      return h.redirect("/admin");
+      }
+    },
+
   logout: {
     auth: false,
     handler: function (request, h) {
@@ -67,10 +100,11 @@ export const accountsController = {
   showProfile: {
     auth: false,
     handler: async function (request, h) {
-      const loggedInUser = await db.userStore.getUserById(request.params.id);
+      const user = await db.userStore.getUserById(request.params.id);
+      console.log(user);
       const viewData = {
         title: "Profile",
-        user: loggedInUser,
+        user: user,
       }
       return h.view("profile-view", viewData);
     },
@@ -83,6 +117,16 @@ export const accountsController = {
       await userStore.updateProfile(updatedUser)
       return h.redirect("/dashboard");
       },
+  },
+
+// Functionality for user to delete own account. 
+
+  deleteAccount: {
+    handler: async function (request, h) {
+      const user = await db.userStore.getUserById(request.params.id);
+      await db.userStore.deleteUserById(user._id);
+      return h.redirect("/");  
+    },
   },
 
   async validate(request, session) {

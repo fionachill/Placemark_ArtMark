@@ -41,7 +41,7 @@ export const monument = {
     location: "Gorey",
     latitude: "52.67336565814323",
     longitude: "-6.3023335486884395",
-    access: "Yes"
+    isPublic: true
 };
 
 export const testArtmarks = [
@@ -53,7 +53,7 @@ export const testArtmarks = [
         location: "Amsterdam",
         latitude: "52.38044951788457",
         longitude: "4.864587109734134",
-        access: "yes"
+        isPublic: true
     },
     {
         category: "Architecture",
@@ -63,7 +63,7 @@ export const testArtmarks = [
         location: "Arklow",
         latitude: "52.816633217101696",
         longitude: "-6.162400641983302",
-        access: "yes"
+        isPublic: false
     },
 ];
 

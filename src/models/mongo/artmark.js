@@ -11,7 +11,7 @@ const artmarkSchema = new Schema({
     location: String,
     latitude: String,
     longitude: String,
-    access: String,
+    isPublic: Boolean,
     userid: {
         type: Schema.Types.ObjectId,
         ref: "User",

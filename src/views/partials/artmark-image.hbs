@@ -1,13 +1,18 @@
 <div class="card">
     <div class="card-image">
         <figure class="image is-256x256">
+            {{#if artmark.img}}
             <img src="{{artmark.img}}">
+            {{else}}
+            <img src="public\images\placeholder.png">
+            {{/if}}
         </figure>
     </div>
     <div class="card-content">
         <form action="/artmark/{{artmark._id}}/uploadimage" method="POST" enctype="multipart/form-data">
             <div id="file-select" class="file has-name is-fullwidth">
-                <label class="file-label"> <input class="file-input" name="imagefile" type="file" name="resume" accept="image/png, image/jpeg">
+                <label class="file-label"> 
+                    <input class="file-input" name="imagefile" type="file" name="resume" accept="image/png, image/jpeg">
                     <span class="file-cta">
                         <span class="file-icon">
                             <i class="fas fa-upload"></i>

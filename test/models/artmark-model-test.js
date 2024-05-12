@@ -61,5 +61,10 @@ suite("Artmark Model tests", () => {
         assert.equal(testArtmarks.length, allArtmarks.length);
     });
 
+    test("return public artmarks", async () => {
+        const publicArtmarks = await db.artmarkStore.getPublicArtmarks();
+        assert.equal(publicArtmarks.length, testArtmarks.length ); 
+    });
+
     
 });

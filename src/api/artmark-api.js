@@ -3,6 +3,7 @@ import { ArtmarkSpec, ArtmarkSpecPlus, ArtmarkArraySpec, IdSpec } from "../model
 import { db } from "../models/db.js";
 import { validationError } from "./logger.js";
 
+
 export const artmarkApi = {
     find: {
         auth: {

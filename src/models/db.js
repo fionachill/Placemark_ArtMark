@@ -27,5 +27,5 @@ export const db = {
                 this.userStore = userMemStore;
                 this.artmarkStore = artmarkMemStore;
         }
-    },
+    }
 };

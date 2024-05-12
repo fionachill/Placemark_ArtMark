@@ -14,7 +14,21 @@ export const artmarkMongoStore = {
         return null;
     },
 
-    async addArtmark(artmark) {
+    async getPublicArtmarks() {
+        const publicArtmarks = await Artmark.find({ isPublic: true});
+        /* eslint no-plusplus: ["error", { "allowForLoopAfterthoughts": true }] */
+        // for (let i = 0 ; i < artmarks.length ; i ++) {
+        //     if (artmarks[i].isPublic === true) {
+        //         console.log(artmarks[i]);
+        //         publicArtmarks.push(artmarks[i]);
+        //     }
+        // } 
+        return publicArtmarks;
+    },
+
+
+    async addArtmark(userId, artmark) {
+        artmark.userId = userId;
         const newArtmark = new Artmark(artmark);
         const artmarkObj = await newArtmark.save();
         return this.getArtmarkById(artmarkObj._id);
@@ -41,9 +55,10 @@ export const artmarkMongoStore = {
         const artmark = await Artmark.findOne({ _id: updatedArtmark._id });
         artmark.title = updatedArtmark.title;
         artmark.img = updatedArtmark.img;
+        artmark.artist = updatedArtmark.artist;
         artmark.description = updatedArtmark.description;
         await artmark.save();
-    }
+    },
 
 
 };

@@ -16,6 +16,18 @@ export const artmarkController = {
         },
     },
 
+    showPublicArtmarks: {
+        handler: async function (request, h) {
+            const artmarks = await db.artmarkStore.getPublicArtmarks();
+            const viewData = {
+                title: "Artmark Gallery",
+                artmarks: artmarks,
+            };
+            console.log("public artmarks coming up");
+            return h.view("public-artmarks-view", viewData);
+        },
+    },
+
     uploadImage: {
         handler: async function (request, h) {
             try {

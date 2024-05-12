@@ -31,7 +31,7 @@ export const ArtmarkSpec = Joi.object()
     location: Joi.string().example("Dublin").required(), 
     latitude: Joi.string().example("53.34061384439304").allow(""),
     longitude: Joi.string().example("-6.2633114754916015").allow(""),
-    access: Joi.string().valid("Yes", "No"),
+    isPublic: Joi.string().valid("True", "False"),
     userid: IdSpec,
 })
 .label("Artmark");

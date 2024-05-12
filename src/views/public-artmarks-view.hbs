@@ -1,0 +1,26 @@
+{{> welcome-menu active="gallery"}}
+
+
+<p>GALLERY GOES HERE</p>
+
+<div class="columns is-multiline">
+    {{#each artmarks}}
+        <div class="column is-one-third">
+            <div class="card">
+                <div class="card-image">
+                    <figure class="image is-square">
+                        <img src="{{artmark.img}}" alt="Placeholder image">
+                    </figure>
+                </div>
+                <div class="media-content">
+                    <p class="title">
+                        {{title}}
+                    </p>
+                    <p class="subtitle">
+                        {{artist}}
+                    </p>
+                </div>
+            </div>
+        </div>
+    {{/each}}
+</div> 

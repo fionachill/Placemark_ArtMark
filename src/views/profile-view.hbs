@@ -4,9 +4,9 @@
     <div class="box">
         <h1 class="title">User Details</h1>
             <label class="label">Name</label>
-            <p>{{firstName}} {{lastName}}</p>
+            <p class="subtitle"> {{user.firstName}} {{user.lastName}} </p>
             <label class="label">Email</label>
-            <p>{{email}}</p>    
+            <p class="subtitle">{{user/email}}</p>    
     </div>
 </section>
 
@@ -35,5 +35,15 @@
                 <button class="button is-link">Update Profile</button>
             </div>
     </form>
+    </div>
+</section>
+
+<section class="section">
+    <div class="box">
+        <h1 class="title">Delete Account</h1>
+        <form action="/profile/{id}/delete" method="POST">
+                <p>Delete My Artmarks Account</p>
+                 <button class="button is-link">Delete this account</button>
+        </form>
     </div>
 </section>

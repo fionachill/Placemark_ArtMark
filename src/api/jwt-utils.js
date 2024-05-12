@@ -32,7 +32,9 @@ export async function validate(decoded, request) {
     const user = await db.userStore.getUserById(decoded.id);
     if (!user) {
         return { isValid: false };
+    // eslint-disable-next-line no-else-return
     }
-    console.log("boom?")
+    console.log("BOOM!"); 
     return { isValid: true, credentials: user };
 }
+

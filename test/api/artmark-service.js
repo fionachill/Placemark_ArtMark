@@ -56,7 +56,7 @@ export const artmarkService = {
 
     async authenticate(user) {
         const response = await axios.post(`${this.artmarkUrl}/api/users/authenticate`, user);
-        // eslint-disable-next-line dot-notation, prefer-template
+         // eslint-disable-next-line dot-notation
         axios.defaults.headers.common["Authorization"] = "Bearer " + response.data.token;
         return response.data;
     },

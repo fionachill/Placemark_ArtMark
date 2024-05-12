@@ -6,6 +6,7 @@ export const dashboardController = {
     handler: async function (request, h) {
       const loggedInUser = request.auth.credentials;
       const artmarks = await db.artmarkStore.getUserArtmarks(loggedInUser._id);
+      console.log(loggedInUser._id);
       const viewData = {
         title: "ArtMarks Dashboard",
         user: loggedInUser,
@@ -19,7 +20,7 @@ export const dashboardController = {
     validate: {
       payload: ArtmarkSpec,
       options: { abortEarly: false },
-      failAction: function (request, h, error ) {
+      failAction: async function (request, h, error ) {
         return h.view("dashboard-view", {title: "Add Artmark error", errors: error.details }).takeover().code(400);
       },
     },
@@ -34,9 +35,9 @@ export const dashboardController = {
             location: request.payload.location,
             latitude: request.payload.latitude,
             longitude: request.payload.longitude,
-            access: request.payload.access,
+            isPublic: request.payload.access,
         };
-        await db.artmarkStore.addArtmark(newArtmark);
+        await db.artmarkStore.addArtmark(loggedInUser._id, newArtmark);
         return h.redirect("/dashboard");
     },
 },
