@@ -26,9 +26,9 @@ export const userMongoStore = {
         return user;
     },
 
-    async deleteUserById(id) {
+    async deleteUserById(userId) {
         try {
-            await User.deleteOne({ _id: id });
+            await User.deleteOne({ _id: userId });
         } catch (error) {
             console.log("bad id");
         }
@@ -38,12 +38,13 @@ export const userMongoStore = {
         await User.deleteMany({});
     },
 
-    async updateUser(user, updatedUser) {
-        updatedUser.id = user.id;
-        user.firstName = updatedUser.firstName;
-        user.lastName = updatedUser.lastName;
-        user.email = updatedUser.email;
-        user.password = updatedUser.password;
-        await user.save();
+    async updateUser(userId, updatedUser) {
+        const userDoc = await User.findOne({ _id: userId });
+        userDoc.firstName = updatedUser.firstName;
+        userDoc.lastName = updatedUser.lastName;
+        userDoc.email = updatedUser.email;
+        userDoc.password = updatedUser.password;
+        await userDoc.save();
+        return userDoc;
     },
 };

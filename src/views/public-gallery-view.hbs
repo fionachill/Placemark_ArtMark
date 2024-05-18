@@ -1,0 +1,31 @@
+{{> menu active="gallery"}}
+
+
+<div class="columns is-multiline">
+    {{#each artmarks}}
+        <div class="column is-one-third">
+            <div class="card">
+                <div class="card-image">
+                    <figure class="image">
+                        <img src="{{img}}" alt="{{title}}">
+                    </figure>
+                </div>
+                <div class="media-content">
+                    <p class="title">
+                        {{title}}
+                    </p>
+                    <p class="subtitle">
+                        Artist: {{artist}}<br>
+                        Location: {{location}}, {{latitude}}, {{longitude}}
+                    </p>
+                    <p class="subtitle">
+                    <footer class="card-footer">
+                        <a href="/gallery/{{_id}}" class="card-footer-item">
+                        <span class="icon is-small">
+                            <i class="fas fa-eye"></i>
+                    </p>
+                </div>
+            </div>
+        </div>
+    {{/each}}
+</div>

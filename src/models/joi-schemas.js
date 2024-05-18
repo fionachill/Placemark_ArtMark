@@ -43,6 +43,12 @@ export const ArtmarkSpecPlus = ArtmarkSpec.keys({
 
 export const ArtmarkArraySpec = Joi.array().items(ArtmarkSpecPlus).label("ArtmarkArray");
 
+export const ReviewSpec = Joi.object().keys({
+    reviewText: Joi.string().example("What lovely artwork").required(),
+    userid: IdSpec,
+    artmarkid: IdSpec,
+}).label("Review");
+
 export const JwtAuth = Joi.object()
 .keys({
     success: Joi.boolean().example("true").required(),

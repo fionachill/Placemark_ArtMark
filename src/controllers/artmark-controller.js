@@ -1,6 +1,7 @@
 // eslint-disable-next-line import/no-unresolved
 import { db } from "../models/db.js";
 import { imageStore } from "../models/image-store.js";
+import { ReviewSpec } from "../models/joi-schemas.js";
 
 
 export const artmarkController = {
@@ -25,9 +26,46 @@ export const artmarkController = {
                 artmarks: artmarks,
             };
             console.log("public artmarks coming up");
-            return h.view("public-artmarks-view", viewData);
+            return h.view("public-gallery-view", viewData);
         },
     },
+
+    showOnePublicArtmark: {
+        auth: false,
+        handler: async function (request, h) {
+            const artmark = await db.artmarkStore.getArtmarkById(request.params.id);
+            const reviews = await db.reviewStore.getReviewsByArtmarkId(artmark._id);
+            const viewData = {
+                title: "Artmark",
+                artmark: artmark,
+                reviews: reviews,
+            };
+            return h.view("public-artmark-view", viewData);
+        },
+    },
+
+    addReview: {
+        validate: {
+            payload: ReviewSpec,
+            options: { abortEarly: false},
+            failAction: async function (request, h, error){
+                return h.view("public-artmark-view", {title: "Error adding review", errors: error.details}).takeover().code(400);
+            },
+        },
+        handler: async function (request, h) {
+            const loggedInUser = request.auth.credentials;
+            const artmark = await db.artmarkStore.getArtmarkById(request.params.id);
+            const newReview = {
+                reviewText: request.payload.reviewText,
+            };
+            await db.reviewStore.addReview(loggedInUser._id, artmark._id, newReview);
+            console.log("adding review to artmark");
+            return h.redirect("/gallery");
+        },
+
+    },
+
+    
 
     uploadImage: {
         handler: async function (request, h) {

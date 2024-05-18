@@ -1,0 +1,43 @@
+{{> menu}}
+<section class="section">
+    <div class="container">
+        <div class="columns">
+            <div class="column">
+                <div class="tile is-ancestor">
+                <div class="card">
+                    <div class="tile is-parent">
+                        <article class="tile is-child notification is-success">
+                            <p class="title">{{artmark.title}}</p>
+                            <p class="subtitle">Artist: {{artmark.artist}}</p>
+                                <div class="card-image">
+                                    <figure class="image is-256x256">
+                                        <img src="{{artmark.img}}">
+                                    </figure>
+                                </div>
+                            <br><p class="subtitle">{{artmark.description}}</p>
+                        </article>
+                    </div>
+                    <div class="tile is-parent">
+                        <article class="tile is-child notification is-primary">
+                            <p class="title">{{artmark.location}}</p>
+                            <p class="subtitle">Latitude: {{artmark.latitude}}, Longitude: {{artmark.longitude}}</p>
+                        </article>
+                    </div>
+                </div>
+                </div>
+            </div>
+        <div class="column is-one-third">
+            <div class="card">
+                <div class="tile is-parent">
+                    <article class="tile is-child notification is-success">
+                         <p class="title"> Reviews</p>
+                         {{> add-review}}
+                         {{> list-reviews}}   
+                    </article>
+                    
+                </div>
+                    
+            </div>
+        </div>
+    </div>
+</section>

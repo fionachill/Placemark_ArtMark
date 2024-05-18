@@ -7,10 +7,12 @@ import { artmarkJsonStore } from "./json/artmark-json-store.js";
 import { connectMongo } from "./mongo/connect.js";
 import { userMongoStore } from "./mongo/user-mongo-store.js";
 import { artmarkMongoStore } from "./mongo/artmark-mongo-store.js";
+import { reviewMongoStore } from "./mongo/review-mongo-store.js";
 
 export const db = {
     userStore: null,
     artmarkStore: null,
+    reviewStore: null,
 
     init(storeType) {
         switch (storeType) {
@@ -21,6 +23,7 @@ export const db = {
             case "mongo":
                 this.userStore = userMongoStore;
                 this.artmarkStore = artmarkMongoStore;
+                this.reviewStore = reviewMongoStore;
                 connectMongo();
                 break;
             default:

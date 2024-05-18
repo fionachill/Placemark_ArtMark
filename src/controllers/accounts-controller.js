@@ -1,5 +1,5 @@
 import { db } from "../models/db.js";
-import { UserCredentialsSpec, UserSpec } from "../models/joi-schemas.js"
+import { UserCredentialsSpec, UserSpec, UserSpecPlus } from "../models/joi-schemas.js"
 import { userMongoStore } from "../models/mongo/user-mongo-store.js";
 
 export const accountsController = {
@@ -113,27 +113,29 @@ export const accountsController = {
   },
 
   updateUser: {
+    auth: false,
     validate: {
-      payload: UserSpec,
+      payload: UserSpecPlus,
       options: { abortEarly: false },
       failAction: function (request, h, error) {
         return h.view("profile-view", { title: "Update Profile error", errors: error.details }).takeover().code(400);
       },
     },
     handler: async function (request, h) {
-      const user = await db.userStore.getUserById(request.params.id);
-      const updatedUser = request.body;
-      await db.userStore.updateUser(user, updatedUser)
+      const userId = await db.userStore.getUserById(request.params.id);
+      const updatedUser = request.payload;
+      await db.userStore.updateUser(userId, updatedUser)
       return h.redirect("/dashboard");
       },
   },
 
-// Functionality for user to delete own account. 
+// Functionality for user to delete own account. Not working
 
   deleteAccount: {
+    auth: false,
     handler: async function (request, h) {
-      const user = await db.userStore.getUserById(request.params.id);
-      await db.userStore.deleteUserById(user._id);
+      const userId = await db.userStore.getUserById(request.params.id);
+      await db.userStore.deleteUserById(userId._id);
       console.log(`Deleting user: ${  user.email}` );
       return h.redirect("/");  
     },
