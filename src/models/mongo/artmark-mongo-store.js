@@ -15,14 +15,7 @@ export const artmarkMongoStore = {
     },
 
     async getPublicArtmarks() {
-        const publicArtmarks = await Artmark.find({ isPublic: true});
-        /* eslint no-plusplus: ["error", { "allowForLoopAfterthoughts": true }] */
-        // for (let i = 0 ; i < artmarks.length ; i ++) {
-        //     if (artmarks[i].isPublic === true) {
-        //         console.log(artmarks[i]);
-        //         publicArtmarks.push(artmarks[i]);
-        //     }
-        // } 
+        const publicArtmarks = await Artmark.find({ isPublic: true}).lean();
         return publicArtmarks;
     },
 
@@ -55,8 +48,6 @@ export const artmarkMongoStore = {
         const artmark = await Artmark.findOne({ _id: updatedArtmark._id });
         artmark.title = updatedArtmark.title;
         artmark.img = updatedArtmark.img;
-        artmark.artist = updatedArtmark.artist;
-        artmark.description = updatedArtmark.description;
         await artmark.save();
     },
 

@@ -13,23 +13,23 @@
 <section class="section">
     <div class="box">
     <h1 class="title">Edit Profile</h1>
-    <form action="/profile/update/{{user._id}}" method="POST">
+    <form action="/profile/{{user._id}}/update" method="POST">
         <label class="label">Name</label>
             <div class="field is-horizontal">
                 <div class="field-body">
                     <div class="field">
-                        <input class="input" type="text" placeholder="Enter first name" name="firstName" value="{{user.firstName}}">
+                        <input class="input" type="text" placeholder="Enter first name" name="firstName">
                     </div>
                     <div class="field">
-                        <input class="input" type="text" placeholder="Enter last name" name="lastName" value="{{user.lastName}}">
+                        <input class="input" type="text" placeholder="Enter last name" name="lastName">
                     </div>
                 </div>
             </div>
             <div class="field">
-                <label class="label">Email</label> <input class="input" type="text" placeholder="Enter email" name="email" value="{{user.email}}">
+                <label class="label">Email</label> <input class="input" type="text" placeholder="Enter email" name="email">
             </div>
             <div class="field">
-                <label class="label">Password</label> <input class="input" type="password" plaholder="Enter password" name="password" value="{{user.password}}">
+                <label class="label">Password</label> <input class="input" type="password" plaholder="Enter password" name="password">
             </div>
             <div class="field is-grouped">
                 <button class="button is-link">Update Profile</button>

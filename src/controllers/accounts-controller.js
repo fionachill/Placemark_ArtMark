@@ -9,12 +9,14 @@ export const accountsController = {
       return h.view("main", { title: "Welcome to ArtMarks" });
     },
   },
+
   showSignup: {
     auth: false,
     handler: function (request, h) {
       return h.view("signup-view", { title: "Sign up for ArtMarks" });
     },
   },
+  
   signup: {
     auth: false,
     validate: {
@@ -110,11 +112,18 @@ export const accountsController = {
     },
   },
 
-  updateProfile: {
+  updateUser: {
+    validate: {
+      payload: UserSpec,
+      options: { abortEarly: false },
+      failAction: function (request, h, error) {
+        return h.view("profile-view", { title: "Update Profile error", errors: error.details }).takeover().code(400);
+      },
+    },
     handler: async function (request, h) {
       const user = await db.userStore.getUserById(request.params.id);
       const updatedUser = request.body;
-      await userStore.updateProfile(updatedUser)
+      await db.userStore.updateUser(user, updatedUser)
       return h.redirect("/dashboard");
       },
   },
@@ -123,9 +132,9 @@ export const accountsController = {
 
   deleteAccount: {
     handler: async function (request, h) {
-      const loggedInUser = request.auth.credentials;
-      const user = await db.userStore.getUserById(loggedInUser._id);
+      const user = await db.userStore.getUserById(request.params.id);
       await db.userStore.deleteUserById(user._id);
+      console.log(`Deleting user: ${  user.email}` );
       return h.redirect("/");  
     },
   },

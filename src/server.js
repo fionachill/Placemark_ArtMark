@@ -9,7 +9,6 @@ import dotenv from "dotenv";
 import jwt from "hapi-auth-jwt2";
 import path from "path";
 import { fileURLToPath } from "url";
-import disinfect from "disinfect";
 import { webRoutes } from "./web-routes.js";
 import { apiRoutes } from "./api-routes.js";
 import { db } from "./models/db.js";
@@ -40,13 +39,13 @@ const swaggerOptions = {
     security: [{ jwt: [] }]
 };
 
+
+
 async function init() {
     const server = Hapi.server({
         port: process.env.PORT || 3000,
     });
 
-    await server.register(Inert);
-    await server.register(Vision);
     await server.register(Cookie);
     await server.register(jwt);
 

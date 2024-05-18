@@ -29,6 +29,7 @@ export const seedData = {
         wonderfulbarn: {
             category: "Architecture",
             title: "The Wonderful Barn", 
+            img: "https://res.cloudinary.com/dmf4bd1hg/image/upload/v1715808057/s4mrr4lnfpcuw4jsoeve.jpg",
             artist: "John Glin",
             description: "A corkscrew shaped building commissioned by local landlord to employ the local poor",
             location: "Leixlip",
@@ -40,6 +41,7 @@ export const seedData = {
         thedrummer: {
             category: "Sculpture",
             title: "The Drummer",
+            img: "https://res.cloudinary.com/dmf4bd1hg/image/upload/v1715808254/z8h17u9v76pd8sidypj3.jpg",
             artist: "Barry Flanagan",
             description: "A fantastical bronze hare statue standing on it's hind legs beating a drum",
             location: "Irish Museum of Modern Art",
@@ -47,6 +49,19 @@ export const seedData = {
             longitude: "-6.299871146178594",
             isPublic: true,
             userid: "->users.paulie",
+        },
+        thebean: {
+            category: "Sculpture",
+            title: "Cloud Gate (The Bean)",
+            img: "https://res.cloudinary.com/dmf4bd1hg/image/upload/v1715808299/vgy18t7ebblj5xwqmku5.jpg",
+            artist: "Anish Kapoor",
+            description: "A highly reflective stainless steel sculpture resembling a bean",
+            location: "Chicago",
+            latitude: "41.8825",
+            longitude: "-87.623333",
+            isPublic: false,
+            userid: "->users.carm",
         }
+
     },
 };

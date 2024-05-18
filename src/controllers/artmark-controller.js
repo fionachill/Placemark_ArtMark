@@ -17,6 +17,7 @@ export const artmarkController = {
     },
 
     showPublicArtmarks: {
+        auth: false,
         handler: async function (request, h) {
             const artmarks = await db.artmarkStore.getPublicArtmarks();
             const viewData = {
@@ -38,10 +39,10 @@ export const artmarkController = {
                     artmark.img = url;
                     await db.artmarkStore.updateArtmark(artmark);
                 }
-                return h.redirect(`/artmark/${artmark._id}`);
+                return h.redirect("/dashboard");
             } catch (err) {
                 console.log(err);
-                return h.redirect(`/artmark/${artmark._id}`);
+                return h.redirect("/dashboard");
             }
         },
         payload: {

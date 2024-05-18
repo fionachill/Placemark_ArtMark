@@ -15,7 +15,7 @@ export const webRoutes = [
     { method: "GET", path: "/adminlogin", config: adminController.showAdminLogin },
     
     { method: "GET", path: "/profile", config: accountsController.showProfile },
-    { method: "POST", path: "/profile/{id}/update", config: accountsController.updateProfile },
+    { method: "POST", path: "/profile/{id}/update", config: accountsController.updateUser },
     { method: "GET", path: "/profile/delete/{id}", config: accountsController.deleteAccount },
     { method: "GET", path: "/about", config: aboutController.index },
 
