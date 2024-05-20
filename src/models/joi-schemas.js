@@ -5,7 +5,7 @@ export const IdSpec = Joi.alternatives().try(Joi.string(), Joi.object()).descrip
 export const UserCredentialsSpec = Joi.object()
 .keys({
     email: Joi.string().email().example("bilbo@theshire.com").required(),
-    password: Joi.string().example("myprecious").required(),
+    password: Joi.string().example("myprecious").min(6).required(),
 }).label("UserCredentials");
 
 export const UserSpec = UserCredentialsSpec.keys({
@@ -20,6 +20,9 @@ export const UserSpecPlus = UserSpec.keys({
 
 export const UserArray = Joi.array().items(UserSpecPlus).label("UserArray");
 
+// export const AdminSpec = UserCredentialsSpec.keys({
+//     admin: Joi.boolean().valid("true").required(),
+// }).label("AdminCredentials");
 
 
 export const ArtmarkSpec = Joi.object()
