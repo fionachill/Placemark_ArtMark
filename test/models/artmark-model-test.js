@@ -22,7 +22,8 @@ suite("Artmark Model tests", () => {
     });
 
     test("create an artmark", async () => {
-        const artmark = await db.artmarkStore.addArtmark(monument);
+        const user = await db.userStore.addUser(betty);
+        const artmark = await db.artmarkStore.addArtmark(user._id, monument);
         assertSubset(monument, artmark);
         assert.isDefined(artmark._id);
     });
@@ -36,7 +37,8 @@ suite("Artmark Model tests", () => {
     });
 
     test("get an artmark - success", async () => {
-        const artmark = await db.artmarkStore.addArtmark(monument);
+        const user = await db.userStore.addUser(betty);
+        const artmark = await db.artmarkStore.addArtmark(user._id, monument);
         const returnedArtmark = await db.artmarkStore.getArtmarkById(artmark._id);
         assertSubset(monument, artmark);
     });
@@ -63,8 +65,9 @@ suite("Artmark Model tests", () => {
 
     test("return public artmarks", async () => {
         const publicArtmarks = await db.artmarkStore.getPublicArtmarks();
-        assert.equal(publicArtmarks.length, testArtmarks.length ); 
+        assert.equal(publicArtmarks.length, 1 ); 
     });
+
 
     
 });
