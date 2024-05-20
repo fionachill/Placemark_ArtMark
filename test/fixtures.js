@@ -5,6 +5,7 @@ export const betty = {
     lastName: "Boop",
     email: "betty@fleischer.com",
     password: "secret",
+    admin: false,
 };
 
 export const bettyCredentials = {
@@ -18,24 +19,28 @@ export const testUsers = [
         lastName: "Soprano",
         email: "tony@sopranos.com",
         password: "gabagool",
+        admin: true,
     },
     {
         firstName: "Frasier",
         lastName: "Crane",
         email: "frasier@seattle.com",
         password: "veneer",
+        admin: false,
     },
     {
         firstName: "Maurice",
         lastName: "Moss",
         email: "moss@reynholmindustries.com",
         password: "streetcountdown",
+        admin: false,
     },
 ];
 
 export const monument = {
     category: "Monument",
     title: "1798 Monument",
+    img: "",
     artist: "Unknown",
     description: "A stone cross built in the 1800s to commemorate the 1798 rebellion",
     location: "Gorey",
@@ -66,4 +71,14 @@ export const testArtmarks = [
         isPublic: false
     },
 ];
+
+export const testReview = {
+    reviewText: "Lovely art, difficult to find. Badly signposted",
+};
+
+export const badReview = {
+    reviewText: "",
+};
+
+
 

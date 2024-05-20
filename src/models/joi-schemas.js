@@ -49,6 +49,8 @@ export const ReviewSpec = Joi.object().keys({
     artmarkid: IdSpec,
 }).label("Review");
 
+export const ReviewArraySpec = Joi.array().items(ReviewSpec).label("ReviewArray");
+
 export const JwtAuth = Joi.object()
 .keys({
     success: Joi.boolean().example("true").required(),

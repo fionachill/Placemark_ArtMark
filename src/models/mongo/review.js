@@ -11,7 +11,7 @@ const reviewSchema = new Schema({
     artmarkId: {
         type: Schema.Types.ObjectId,
         ref: "Artmark",
-    },
-});
+    },   
+    }, {timestamps: true});
 
 export const Review = Mongoose.model("Review", reviewSchema);

@@ -1,0 +1,12 @@
+{{> menu}}
+
+<form class="box" action="/review/{{artmark._id}}/updatereview/{{review._id}}" method="POST">
+    <label>Update Review</label>
+    <div class="field is-horizontal">
+        <div class="field-body">
+            <div class="field">
+                <textarea class="textarea is-link" name="reviewText">{{review.reviewText}}</textarea>
+            </div>
+    </div>
+    <button class="button is-link is-rounded">Update Review</button>
+</form>

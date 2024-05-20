@@ -38,6 +38,18 @@ export const seedData = {
             isPublic: true,
             userid: "->users.tony",
         },
+        lukekelly: {
+            category: "Sculpture",
+            title: "Luke Kelly Head", 
+            img: "https://res.cloudinary.com/dmf4bd1hg/image/upload/v1716150759/ikinqnfwrxljcdfgimdy.jpg",
+            artist: "Vera Klute",
+            description: "A controversial sculpture of the Irish folk singer Luke Kelly that has been vandalised numerous times.",
+            location: "Dublin",
+            latitude: "53.34068",
+            longitude: "-6.26329",
+            isPublic: false,
+            userid: "->users.tony",
+        },
         thedrummer: {
             category: "Sculpture",
             title: "The Drummer",
@@ -62,6 +74,19 @@ export const seedData = {
             isPublic: false,
             userid: "->users.carm",
         }
+    },
 
+    reviews: {
+        _model: "Review",
+        wonderfulbarnreview: {
+            reviewText: "I think this is a fascinating bit of architecture, my one complaint is that it is a little difficult to get to.",
+            userId: "->users.carm",
+            artmarkId: "->artmarks.wonderfulbarn"
+        },
+        thedrummerreview: {
+            reviewText: "This statue is a great example of whimsy and mystery, but it scared me the first time I saw it.",
+            userId: "->users.tony",
+            artmarkId: "->artmarks.thedrummer"
+        },
     },
 };

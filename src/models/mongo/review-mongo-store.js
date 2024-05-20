@@ -7,6 +7,11 @@ export const reviewMongoStore = {
         return reviews;
     },
 
+    async getAllReviews() {
+        const reviews = await Review.find().lean();
+        return reviews;
+    },
+
     async getReviewsByArtmarkId(id) {
         const reviews = await Review.find({ artmarkId: id}).lean();
         return reviews;
@@ -26,6 +31,7 @@ export const reviewMongoStore = {
         const newReview = new Review(review);
         const reviewObj = await newReview.save();
         return this.getReviewById(reviewObj._id);
+        
     },
 
     async deleteReview(id) {
