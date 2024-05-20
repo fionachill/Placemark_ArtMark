@@ -1,5 +1,6 @@
 import { artmarkApi } from "./api/artmark-api.js";
 import { userApi } from "./api/user-api.js";
+import { reviewApi } from "./api/review-api.js";
 
 export const apiRoutes = [
     { method: "POST", path: "/api/users", config: userApi.create },
@@ -15,5 +16,7 @@ export const apiRoutes = [
     { method: "GET", path: "/api/artmarks", config: artmarkApi.find },
     { method: "GET", path: "/api/artmarks/{id}", config: artmarkApi.findOne },
     { method: "DELETE", path: "/api/artmarks/{id}", config: artmarkApi.deleteOne },
+
+    { method: "GET", path: "/api/reviews", config: reviewApi.find},
         
 ];
