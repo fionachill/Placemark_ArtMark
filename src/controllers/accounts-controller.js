@@ -59,7 +59,7 @@ export const accountsController = {
       }
       const result = await passwordUtils.comparePasswords(password, user.password);
       console.log(result);
-      if (!user && !result) {
+      if (!result) {
         return h.redirect("/");
       } 
       request.cookieAuth.set({ id: user._id });
