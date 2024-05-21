@@ -54,7 +54,9 @@ export const accountsController = {
     handler: async function (request, h) {
       const { email, password } = request.payload;
       const user = await db.userStore.getUserByEmail(email);
-      if (!user || user.password !== password) {
+      // when using hashing and salting the line below should be commented out
+      // if (!user || user.password !== password)
+      if (!user) {
         return h.redirect("/");
       }
       const result = await passwordUtils.comparePasswords(password, user.password);
