@@ -42,6 +42,22 @@ export const dashboardController = {
     },
 },
 
+getArtmarkByCategory: {
+  handler: async function (request, h) {
+    const loggedInUser = request.auth.credentials;
+    // eslint-disable-next-line prefer-destructuring
+    const category = request.params.category;
+    const artmarks = await db.artmarkStore.getArtmarksByCategory(loggedInUser._id, category);
+    const viewData = {
+      title: "ArtMarks Dashboard",
+      user: loggedInUser,
+      artmarks: artmarks,
+    };
+    return h.view("dashboard-view", viewData);
+  },
+
+},
+
 deleteArtmark: {
     handler: async function (request, h) {
         const artmark = await db.artmarkStore.getArtmarkById(request.params.id);

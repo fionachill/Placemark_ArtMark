@@ -1,6 +1,7 @@
 import { db } from "../models/db.js";
 import { UserCredentialsSpec, UserSpec, UserSpecPlus } from "../models/joi-schemas.js"
 import { userMongoStore } from "../models/mongo/user-mongo-store.js";
+import { passwordUtils } from "../models/password-utils.js";
 
 export const accountsController = {
   index: {
@@ -56,6 +57,11 @@ export const accountsController = {
       if (!user || user.password !== password) {
         return h.redirect("/");
       }
+      const result = await passwordUtils.comparePasswords(password, user.password);
+      console.log(result);
+      if (!user && !result) {
+        return h.redirect("/");
+      } 
       request.cookieAuth.set({ id: user._id });
       return h.redirect("/dashboard");
     },
@@ -143,6 +149,7 @@ export const accountsController = {
 
   async validate(request, session) {
     const user = await db.userStore.getUserById(session.id);
+
     if (!user) {
       return { isValid: false };
     }

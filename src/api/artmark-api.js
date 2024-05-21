@@ -23,6 +23,24 @@ export const artmarkApi = {
         response: { schema: ArtmarkArraySpec, failAction: validationError },
     },
 
+    findpublic: {
+        auth: {
+            strategy: "jwt",
+        },
+        handler: async function (request, h) {
+            try {
+                const artmarks = db.artmarkStore.getPublicArtmarks();
+                return artmarks;
+            } catch (err) {
+                return Boom.serverUnavailable("Database Error");
+            }
+        },
+        tags: ["api"],
+        decription: "Get all public Artmarks",
+        notes: "Returns details of all artmarks saved as public by users",
+        response: { schema: ArtmarkArraySpec, failAction: validationError},
+    },
+
     findOne: {
         auth: {
             strategy: "jwt",

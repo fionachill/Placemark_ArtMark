@@ -1,5 +1,6 @@
 import Mongoose from "mongoose";
 import Boom from "@hapi/boom";
+import validator from "validator";
 
 const { Schema } = Mongoose;
 

@@ -60,7 +60,7 @@ export const artmarkController = {
             };
             await db.reviewStore.addReview(loggedInUser._id, artmark._id, newReview);
             console.log("adding review to artmark");
-            return h.redirect(`/gallery/${  artmark._id}`);
+            return h.redirect(`/gallery/${artmark._id}`);
         },
 
     },

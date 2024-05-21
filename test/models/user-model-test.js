@@ -3,7 +3,7 @@ import { db } from "../../src/models/db.js";
 import { betty, testUsers } from "../fixtures.js";
 import { assertSubset } from "../test-utils.js";
 
-suite("User API tests", () => {
+suite("User Model tests", () => {
     setup(async () => {
         db.init("mongo");
         await db.userStore.deleteAll();
@@ -54,5 +54,8 @@ suite("User API tests", () => {
         assert.equal(testUsers.length, allUsers.length);
     });
     
+    test("log in as admin - success", async () => {
+        
+    })
 
 });

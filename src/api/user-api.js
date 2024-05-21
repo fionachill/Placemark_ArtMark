@@ -129,4 +129,31 @@ export const userApi = {
         response: { schema: JwtAuth, failAction: validationError }
     },
 
+    // authenticateAdmin: {
+    //     auth: false,
+    //     handler: async function (request, h) {
+    //         try {
+    //             const user = await db.userStore.getUserByEmail(request.payload.email);
+    //             if (!user) {
+    //                 return Boom.unauthorized("User not found");
+    //             }
+    //             if (user.password !== request.payload.password) {
+    //                 return Boom.unauthorized("Invalid password");
+    //             }
+    //             if (user.admin !== true) {
+    //                 return Boom.unauthorized("User is not an admin");
+    //             }
+    //             const adminToken = createToken(user);
+    //             return h.response({ success: true, token: token }).code(201);
+    //             } catch (err) {
+    //             return Boom.serverUnavailable("Database Error");
+    //         }
+    //     },
+    //     tags: ["api"],
+    //     description: "Authenticate Admin user",
+    //     notes: "If user has valid email/password and is an Admin, create and return a JWT token",
+    //     validate: { payload: AdminSpec, failAction: validationError },
+    //     response: { schema: JwtAuth, failAction: validationError }
+    // },
+
 };

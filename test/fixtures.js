@@ -46,7 +46,7 @@ export const monument = {
     location: "Gorey",
     latitude: "52.67336565814323",
     longitude: "-6.3023335486884395",
-    isPublic: true
+    isPublic: false
 };
 
 export const testArtmarks = [

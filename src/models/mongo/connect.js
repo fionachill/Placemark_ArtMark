@@ -2,12 +2,15 @@ import * as dotenv from "dotenv";
 import Mongoose from "mongoose";
 import * as mongooseSeeder from "mais-mongoose-seeder";
 import { seedData } from "./seed-data.js";
+import { passwordUtils } from "../password-utils.js";
 
 const seedLib = mongooseSeeder.default;
+
 
 async function seed() {
     const seeder = seedLib(Mongoose);
     const dbData = await seeder.seed(seedData, { dropDatabase: false, dropCollections: true });
+    await passwordUtils.hashPassword(seedData.users.tony.password);
     console.log(dbData);
 }
 
@@ -30,4 +33,6 @@ export function connectMongo() {
         console.log(`database connected to ${this.name} on ${this.host}`);
         seed();
     });
+
+
 }

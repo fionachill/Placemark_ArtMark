@@ -14,6 +14,11 @@ export const artmarkMongoStore = {
         return null;
     },
 
+    async getArtmarksByCategory(id, category) {
+        const artmarks = await Artmark.find({ userid: id, category: category }).lean();
+        return artmarks;
+    },
+
     async getPublicArtmarks() {
         const publicArtmarks = await Artmark.find({ isPublic: true}).lean();
         return publicArtmarks;

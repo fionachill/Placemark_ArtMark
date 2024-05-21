@@ -17,7 +17,7 @@ suite("Review Model tests", () => {
         assert.equal(testReview.reviewText, newReview.reviewText);
     });
 
-    test("create a review - no text", async () => {
+    test("create a review - bad input", async () => {
         const user = await db.userStore.addUser(betty);
         const artmark = await db.artmarkStore.addArtmark(user._id, monument);
         const newBadReview = await db.reviewStore.addReview(user._id, artmark._id, badReview);

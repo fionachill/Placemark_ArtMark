@@ -22,9 +22,7 @@ export const seedData = {
             password: "secret",
             admin: false,
         }
-    },
-
-    artmarks: {
+    },    artmarks: {
         _model: "Artmark",
         wonderfulbarn: {
             category: "Architecture",
@@ -90,3 +88,4 @@ export const seedData = {
         },
     },
 };
+
